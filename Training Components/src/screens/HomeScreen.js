@@ -1,19 +1,21 @@
 import React from "react";
 import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
 
-const HomeScreen = ({navigation}) => {
-  const name = "Sávio";
+const HomeScreen = ({ navigation }) => {
   return (
     <View>
-      <Text style={styles.textTwo}>My name is: {name} </Text>
       <Text style={styles.textOne}>Getting started with React Native</Text>
-      <Button 
-      onPress={() => navigation.navigate('Components')}
-      style={styles.buttonStyle} 
-      title="Go to Componets Demo"/>
-      <TouchableOpacity style={styles.touchButton} onPress={() => navigation.navigate('List')}>
-        <Text style={styles.buttonText}>Go to List Demo</Text>
-      </TouchableOpacity>
+      <View style={styles.viewStyle}>
+        <Button
+          onPress={() => navigation.navigate('Components')}
+          title="Go to Componets Demo" />
+        <TouchableOpacity style={styles.touchButton} onPress={() => navigation.navigate('List')}>
+          <Text style={styles.buttonText}>Go to List Demo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.touchButton} onPress={() => navigation.navigate('Image')}>
+          <Text style={styles.buttonText}>Go to Image</Text>
+        </TouchableOpacity>
+      </View>
     </View>)
 };
 
@@ -36,12 +38,14 @@ const styles = StyleSheet.create({
     minHeight: 35,
     textAlign: "center",
     textAlignVertical: "center"
-  },  
-  buttonStyle: {
-    marginTop: 50
   },
   touchButton: {
     width: "100%"
+  },
+  viewStyle: {
+    width: '90%',
+    alignSelf: 'center',
+    alignContent: 'center'
   }
 });
 
