@@ -1,14 +1,19 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
 
-const HomeScreen = () => {
+const HomeScreen = (props) => {
   const name = "Sávio";
-  const textTwo = <Text style={styles.textTwo}>My name is: {name} </Text>
-  const textOne = <Text style={styles.textOne}>Getting started with React Native</Text>
   return (
     <View>
-      {textOne}
-      {textTwo}
+      <Text style={styles.textTwo}>My name is: {name} </Text>
+      <Text style={styles.textOne}>Getting started with React Native</Text>
+      <Button 
+      onPress={() => props.navigation.navigate('Components')}
+      style={styles.buttonStyle} 
+      title="Go to Componets Demo"/>
+      <TouchableOpacity style={styles.touchButton} onPress={() => props.navigation.navigate('List')}>
+        <Text style={styles.buttonText}>Go to List Demo</Text>
+      </TouchableOpacity>
     </View>)
 };
 
@@ -21,7 +26,22 @@ const styles = StyleSheet.create({
   textOne: {
     fontSize: 45,
     textAlign: "center",
-    marginTop: 30
+    marginVertical: 30
+  },
+  buttonText: {
+    backgroundColor: "#8a0303",
+    color: '#fff',
+    borderRadius: 5,
+    marginTop: 15,
+    minHeight: 35,
+    textAlign: "center",
+    textAlignVertical: "center"
+  },  
+  buttonStyle: {
+    marginTop: 50
+  },
+  touchButton: {
+    width: "100%"
   }
 });
 
