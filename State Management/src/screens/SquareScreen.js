@@ -8,9 +8,23 @@ const SquareScreen = () => {
     const [blue, setBlue] = useState(0);
     return (
         <View>
-            <ColorCounter onDecrease={() => setRed(red - 10)} onIncrease={() => setRed(red + 10)} title="Red"/>
-            <ColorCounter onDecrease={() => setGreen(green - 10)} onIncrease={() => setGreen(green + 10)} title="Green"/>
-            <ColorCounter onDecrease={() => setBlue(blue - 10)} onIncrease={() => setBlue(blue + 10)} title="Blue"/>
+            <ColorCounter onDecrease={() => {
+                red >= 10 ? setRed(red - 10) : undefined
+                }} 
+            onIncrease={() => {
+                red <= 245 ? setRed(red + 10) : undefined
+            }} title="Red"/>
+            <ColorCounter onDecrease={() => {
+                green >= 10 ? setGreen(green - 10) : undefined
+            }} 
+            onIncrease={() => {
+                green >= 245 ? setGreen(green + 10) : undefined
+            }} title="Green"/>
+            <ColorCounter onDecrease={() => {
+                setBlue(blue - 10)
+            }} onIncrease={() => {
+                setBlue(blue + 10)
+            }} title="Blue"/>
             <View style={{height: 100, width: 100, backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></View>
         </View>
     )
