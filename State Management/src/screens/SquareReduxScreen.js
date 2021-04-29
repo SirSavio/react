@@ -4,21 +4,18 @@ import ColorCounterRedux from '../components/ColorCounterRedux';
 
 const SquareReduxScreen = () => {
     const reducer = (state, action ) => {
-        if(action.color == 'red') return {...state, red: state.red + action.amount}
-        else if (action.color == 'green') return {...state, green: state.green + action.amount}
-        else return {...state, blue: state.blue + action.amount}
+        if(action.type == 'change_red') return {...state, red: state.red + action.payload}
+        else if (action.type == 'change_green') return {...state, green: state.green + action.payload}
+        else return {...state, blue: state.blue + action.payload}
     }
     const [state, dispatch] = useReducer(reducer, {red: 0, green: 0, blue: 0})
 
-    const red = 0;
-    const green = 0;
-    const blue = 0;
     return (
         <View>
-            <ColorCounterRedux onDecrease={() => {}} onIncrease={() => {}} title="Red"/>
-            <ColorCounterRedux onDecrease={() => {}} onIncrease={() => {}} title="Green"/>
-            <ColorCounterRedux onDecrease={() => {}} onIncrease={() => {}} title="Blue"/>
-            <View style={{height: 100, width: 100, backgroundColor: `rgb(${red}, ${green}, ${blue})`}}></View>
+            <ColorCounterRedux onDecrease={() => dispatch({type: 'change_red', payload: -10})} onIncrease={() => dispatch({type: 'change_red', payload: 10})} title="Red"/>
+            <ColorCounterRedux onDecrease={() => dispatch({type: 'change_green', payload: -10})} onIncrease={() => dispatch({type: 'change_green', payload: 10})} title="Green"/>
+            <ColorCounterRedux onDecrease={() => dispatch({type: 'change_blue', payload: -10})} onIncrease={() => dispatch({type: 'change_blue', payload: 10})} title="Blue"/>
+            <View style={{height: 100, width: 100, backgroundColor: `rgb(${state.red}, ${state.green}, ${state.blue})`}}></View>
         </View>
     )
 };
